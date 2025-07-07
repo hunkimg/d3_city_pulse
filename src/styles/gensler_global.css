@@ -1,0 +1,2762 @@
+@font-face {
+    font-family: "KievitWeb";
+    src: url('../fonts/KievitWeb.woff');
+}
+
+@font-face {
+    font-family: "KievitWeb-Bold";
+    src: url('../fonts/KievitWeb-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: "KievitWeb-Light";
+    src: url('../fonts/KievitWeb-Light.woff') format('woff');
+}
+
+body,
+html {
+
+    --font-family: "KievitWeb", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    --scroll-behavior: smooth;
+    font-family: KievitWeb, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    height: 100%;
+    line-height: 1.375;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth
+}
+/* ----- MENU ----- START */
+.nav-list__item__custom__research {
+    display: inline-block;
+}
+
+.nav-list__item__custom__research__content {
+    display: inline-block;
+}
+
+.nav-list__item__custom__research__learn-more__break {
+    display: none;
+}
+
+.nav-list__item__custom__research__learn-more {
+    font-weight: bold;
+    font-size: 15px;
+    transition: background-size 0.2s ease-out;
+    transform-origin: right;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+}
+
+.nav-list__item__custom__research:hover .nav-list__item__custom__research__learn-more {
+    background-position: 0% 100%;
+    background-size: 100% 1px;
+}
+
+.nav-list__item__custom__latest-research {
+    display: inline-block;
+    margin-top: 36px;
+}
+
+@media (max-width: 1024px) {
+    .nav-list__item__custom__research__learn-more__break {
+        display: block;
+        line-height: 0;
+    }
+}
+
+@media (max-width: 860px) {
+    .nav-list__item__custom__content__desktop {
+        display: none;
+    }
+
+    .nav-list__item__custom__research__content {
+        max-width: 200px;
+    }
+
+    .nav-list__item__custom__research__learn-more {
+        display: none;
+    }
+
+    .nav-list__item__custom__latest-research {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 861px) {
+    .nav-list__item__custom__content__mobile {
+        display: none;
+    }
+
+    .nav-list__item__custom__content__desktop .active a {
+        color: #f7a246 !important;
+    }
+
+    .nav-list__item .active a.nav-list__item__custom__research {
+        color: #fff !important;
+    }
+}
+
+/* Custom Item adjustment - START */
+@media (min-width: 1181px) {
+    .nav-list__item.equity-the-built-environment {
+        max-width: 216px;
+    }
+}
+
+/* Custom Item adjustment - END */
+
+@media (max-width: 860px) {
+    .nav-list__item__content.nav-list__item--half:nth-child(2) {
+        display: none;
+    }
+}
+
+@media (min-width: 861px) {
+    .nav__gri-search__custom {
+        margin: 0 0 0 auto;
+    }
+
+    .nav__gri-search {
+        display: none;
+    }
+}
+
+/* ----- MENU ----- END */
+
+
+/* ----- DESIGN FORECAST 2022 GRIDBLCKS ----- START */
+
+.df2022-grid-block__pa-title-strip {
+    font-size: 22px;
+    color: #fff;
+    padding: 9px calc(3% + 8px) 4px;
+    margin: -1.2% -1.2% 0 -1.2%;
+}
+
+.df2022-grid-block__title {
+    background: linear-gradient(175deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 80%);
+    font-size: 34px;
+    font-family: 'CindieMono-A', KievitWebBold, KievitWeb, sans-serif;
+    line-height: 1.41;
+    letter-spacing: 2px;
+    padding: 18px 4.2%;
+    color: #ffffff;
+    margin: 0 -1.2%;
+}
+
+/* ----- DESIGN FORECAST 2022 GRIDBLCKS ----- END */
+
+.grid-container-wrapper .df_opening_paragraph {
+    font-size: 30px;
+    font-family: "KievitWeb", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 34px;
+}
+
+.grid-container-wrapper .df_typical_paragraph {
+    font-size: 18px;
+    font-family: "KievitWeb", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 22px;
+}
+
+.grid-container-wrapper .df_trend_headline {
+    font-size: 30px;
+    font-family: "KievitWebLight", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 34px
+}
+
+.grid-container-wrapper .df_practice_area_header {
+    font-size: 48px;
+    font-family: "KievitWebLight", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 52px;
+}
+
+.grid-container-wrapper .df_trend_toothbrush {
+    font-size: 12px;
+    font-family: "KievitWebLight", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 15px;
+    padding: 2px 0 8px 0;
+    margin: 10px 0 0 0;
+    border-top: 2px solid #000;
+}
+
+.grid-container-wrapper .df_trend_toothbrush_number {
+    font-size: 32px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 27px;
+    color: #b5bf23;
+}
+
+.grid-container-wrapper .df_trend_toothbrush_number_lifestyle {
+    font-size: 32px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 27px;
+    color: #dd1377;
+}
+
+.grid-container-wrapper .df_trend_toothbrush_number_work {
+    font-size: 32px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 27px;
+    color: #f48540;
+}
+
+.grid-container-wrapper .df_chunk_spacer {
+    padding: 8px 0 0 0;
+}
+
+.grid-container-wrapper .expertise_summary_text {
+    font-family: "KievitWebLight";
+    font-size: 20px;
+    line-height: 25px;
+    padding: 12px 12px 0 12px;
+}
+
+.grid-container-wrapper .expertise_summary_text a {
+    color: #f48540;
+}
+
+.grid-container-wrapper .offices_contact_info {
+    font-size: 19px;
+    line-height: 23px;
+    margin: 0 0 0 8px;
+}
+
+.grid-container-wrapper .number_container {
+    font-size: 22px;
+    line-height: 26px;
+    display: block;
+    margin: 0 5px 0 0;
+}
+
+.grid-container-wrapper .number_01 {
+    font-size: 100px;
+    font-family: "KievitWeb", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 85px;
+    margin: 4px 0 4px 0;
+    letter-spacing: -4px;
+}
+
+.grid-container-wrapper .number_02 {
+    font-size: 80px;
+    font-family: "KievitWeb", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 70px;
+    margin: 0 0 4px 0;
+}
+
+.grid-container-wrapper .number_03 {
+    font-size: 80px;
+    font-family: "KievitWeb", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 85px;
+    margin: 16px 0 0 0;
+}
+
+.grid-container-wrapper .layer-copy {
+    margin: 0 20px 0 0;
+}
+
+.grid-container-wrapper .layer-copy p {
+    font-size: 16px;
+    margin: 0 0 15px 0;
+}
+
+.grid-container-wrapper .layer-copy h2 {
+    font-size: 37px;
+    letter-spacing: -1px;
+    margin: 0 0 15px 0;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.grid-container-wrapper .layer-copy h3 {
+    font-size: 37px;
+    letter-spacing: -1px;
+    line-height: 39px;
+    margin: 0 10px 15px 0;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.grid-container-wrapper .layer-copy h4 {
+    font-size: 37px;
+    letter-spacing: -1px;
+    line-height: 39px;
+    margin: 12px 10px 0 0;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.grid-container-wrapper .clients-grid-intro {
+    font-size: 37px;
+    font-family: "KievitWebLight", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 38px;
+}
+
+.grid-container-wrapper .sector-trends {
+    background: #000;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.grid-container-wrapper .sector-trends img {
+    width: 100%;
+    height: 100%;
+}
+
+.grid-container-wrapper .sector-trends .copy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    line-height: 1;
+}
+
+.grid-container-wrapper .sector-trends .copy .title {
+    background: #f9a725;
+    height: 28.54%;
+    overflow: hidden;
+    padding: 0 6.89%;
+    margin-bottom: 8.45%;
+}
+
+.grid-container-wrapper .sector-trends .copy .title h2 {
+    color: #fff;
+    font-size: 44px;
+    line-height: 44px;
+    font-family: "KievitWebBold";
+    margin: 6.3% 0 0 0;
+}
+
+.grid-container-wrapper .sector-trends .copy .title h3 {
+    color: #000;
+    font-size: 45px;
+    line-height: 45px;
+    font-family: "KievitWebLight";
+    margin: 0.8% 0 0 0;
+}
+
+.grid-container-wrapper .sector-trends .copy .title-2015 {
+    background: #62cae3;
+    height: 28.54%;
+    overflow: hidden;
+    padding: 0 6.89%;
+    margin-bottom: 8.45%;
+}
+
+.grid-container-wrapper .sector-trends .copy .title-2015 h2 {
+    color: #000;
+    font-size: 44px;
+    line-height: 44px;
+    font-family: "KievitWebBold";
+    margin: 6.3% 0 0 0;
+}
+
+.grid-container-wrapper .sector-trends .copy .title-2015 h3 {
+    color: #fff;
+    font-size: 45px;
+    line-height: 45px;
+    font-family: "KievitWebLight";
+    margin: 0.8% 0 0 0;
+}
+
+.grid-container-wrapper .sector-trends .copy .trend {
+    padding-left: 6.89%;
+    font-size: 21px;
+    font-family: "KievitWebLight";
+}
+
+.grid-container-wrapper .sector-trends .copy .trend strong {
+    font-size: 61px;
+    font-family: "KievitWebExtraBold";
+    color: #c5cb00;
+    display: block;
+    letter-spacing: -1px;
+}
+
+
+
+.grid-container-wrapper .sector-trends .copy .trend-2015 {
+    padding-left: 6.89%;
+    font-size: 21px;
+    font-family: "KievitWebLight";
+}
+
+.grid-container-wrapper .sector-trends .copy .trend-2015 strong {
+    font-size: 61px;
+    font-family: "KievitWebExtraBold";
+    color: #faa634;
+    display: block;
+    letter-spacing: -1px;
+}
+
+
+
+
+.grid-container-wrapper .sector-trends .copy .text {
+    padding-left: 6.89%;
+    font-size: 57px;
+    letter-spacing: -1px;
+}
+
+.image-title-bottom {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-title-bottom img {
+    width: 100%;
+    height: auto;
+}
+
+.image-title-bottom h4 {
+    position: absolute;
+    bottom: 2px;
+    margin: 0;
+    font-size: 37px;
+    line-height: 39px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.people-intro-block {
+    padding: 16px 16px 0 16px;
+}
+
+.people-intro-block h3 {
+    font-size: 37px;
+    line-height: 40px;
+    font-family: "KievitWeb", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.d26_icon_callout {
+    width: 184px;
+    float: left;
+}
+
+.d26_margin_one {
+    margin: 0 24px 0 0;
+}
+
+.d26_icon_callout p {
+    font-size: 14px;
+    font-family: "KievitWeb", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 18px;
+}
+
+.d26_icon_callout hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #000;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.d26_header_text {
+    font-size: 16px;
+    line-height: 22px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    margin: 0 0 1em 0;
+}
+
+.research-header-style {
+    font-size: 19px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2px;
+    margin-bottom: 15px;
+}
+
+.mobile-callout-text-under-image {
+    padding: 8px 8px 8px 12px;
+}
+
+.d27-issue-summary-grid-block {
+    font-size: 48px;
+    font-family: "KievitWebLight", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 52px;
+    padding: 8px 12px 12px 8px;
+}
+
+blockquote {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
+}
+
+@media (max-width: 539px) {
+    .case-study-thumbnail {
+        float: left;
+        margin-right: 0;
+        width: 120px;
+    }
+
+    .case-study-description {
+        margin-left: 134px;
+    }
+
+    .section-wrapper .primary-section .text .red-button-case-studies {
+        width: 100px;
+    }
+
+    .section-wrapper .primary-section .text .red-button-case-studies-2 {
+        width: 100px;
+    }
+}
+
+.df2016-custom-page-title {
+    font-size: 40px;
+    line-height: 44px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+}
+
+/* Design Forecast landing page */
+.df2016-hero-overlay {
+    line-height: 1;
+    padding: 44px 0 72px 0;
+    overflow: hidden;
+}
+
+.df2016-hero-overlay-box {
+    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+    width: 43.2%;
+    padding: 3% 1% 2% 1.6%;
+    float: left;
+}
+
+.df2016-hero-overlay-box-title {
+    font-size: 32px;
+    padding-bottom: 15px;
+}
+
+.df2016-hero-overlay-box-title>img {
+    height: auto;
+    width: 27.3%;
+    position: static;
+    vertical-align: baseline;
+}
+
+.df2016-hero-overlay-box-copy {
+    font-size: 28px;
+    line-height: 32px;
+    padding-right: 6%;
+}
+
+.df2016-hero-overlay-title {
+    float: right;
+    font-family: KievitWebBlack;
+    color: #fff;
+    margin-top: 16px;
+    padding-right: 20px;
+}
+
+.df2016-hero-overlay-title-line {
+    font-size: 170px;
+    line-height: 114px;
+    letter-spacing: -0.06em;
+    text-shadow: 0px 0px 10px rgba(180, 180, 180, 0.4);
+}
+
+.df2016-hero-overlay-title-linesm {
+    font-size: 110px;
+    opacity: 0.8;
+    line-height: 62px;
+    letter-spacing: -0.06em;
+    text-shadow: 0px 0px 10px rgba(180, 180, 180, 0.5);
+}
+
+.content-two-columns {
+    display: table;
+    width: 100%;
+}
+
+.content-two-columns-col {
+    display: table-cell;
+    width: 50%;
+    vertical-align: top;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.content-two-columns-col p {
+    margin-bottom: 16px;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.df2016-metatrends h1 {
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    font-size: 92px;
+    line-height: 1;
+    margin: 24px 0 16px;
+}
+
+.df2016-metatrends p {
+    color: #7f8688;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    font-size: 32px;
+    line-height: 1.2;
+    margin-bottom: 48px;
+    max-width: 924px;
+}
+
+.df2016-closerlook {
+    font-size: 32px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+    padding: 0;
+    margin: 60px 0 52px 0;
+    max-width: 820px;
+}
+
+.df2016-summary {
+    padding-top: 64px;
+}
+
+.df2016-summary .content-two-columns-col {
+    padding-right: 20px;
+}
+
+.df2016-summary h2 {
+    font-size: 40px;
+    line-height: 1.2;
+    margin: -3px 0 0 0;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.df-landing-gb {
+    position: relative;
+}
+
+.df-landing-gb>img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.df-landing-gb-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.df-landing-gb-content>h2 {
+    color: #fff;
+    font-size: 64px;
+    width: 87%;
+    padding: 0;
+    margin: 8% auto 8% auto;
+    line-height: 64px;
+    font-family: "KievitWebExtraBold", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.df-landing-gb-content>.df-landing-gb-bigtitle {
+    font-size: 92px;
+    line-height: 92px;
+}
+
+.df-landing-gb-summary {
+    width: 87%;
+    padding: 4%;
+    margin: auto;
+    box-sizing: border-box;
+    font-size: 18px;
+    line-height: 22px;
+    background: #fff;
+    background: rgba(255, 255, 255, 0.87);
+}
+
+@media (max-width: 1056px) {
+    .df-section {
+        padding-top: 40px;
+        padding-bottom: 25px;
+    }
+
+    .df-section h2 {
+        font-size: 84px;
+    }
+
+    .df-section p {
+        font-size: 26px;
+    }
+
+    .df-section .cta {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 867px) {
+    .df-section {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+
+    .df-section h2 {
+        font-size: 71px;
+    }
+
+    .df-section p {
+        font-size: 22px;
+    }
+
+    .df-section .cta {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 678px) {
+    .df2016-hero-overlay {
+        height: 100%;
+        display: table;
+        padding: 0;
+    }
+
+    .df2016-hero-overlay-box {
+        display: none;
+    }
+
+    .df2016-hero-overlay-title {
+        float: none;
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .df-landing-gb-content>.df-landing-gb-bigtitle {
+        font-size: 64px;
+        line-height: 64px;
+    }
+
+    .df-landing-gb-content>h2 br {
+        display: none;
+    }
+
+    .content-two-columns-col {
+        display: block;
+        width: auto;
+    }
+
+    .content-two-columns-col p {
+        font-size: 14px;
+    }
+
+    .df-section-img {
+        display: none;
+    }
+
+    .df2016-summary {
+        padding-top: 12px;
+    }
+
+    .df2016-summary .content-two-columns-col {
+        padding-right: 0;
+    }
+
+    .df2016-summary h2 {
+        font-size: 17px;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .df2016-summary p {
+        line-height: 1.2;
+    }
+
+    .df2016-summary-images {
+        font-size: 14px;
+    }
+
+    .df2016-summary-images img {
+        width: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .df2016-metatrends h1 {
+        font-size: 32px;
+        margin: 15px 0 10px;
+    }
+
+    .df2016-metatrends p {
+        font-size: 17px;
+        margin-bottom: 12px;
+    }
+
+    .df-section {
+        padding-top: 30px;
+        padding-bottom: 16px;
+    }
+
+    .df-section h2 {
+        font-size: 60px;
+    }
+
+    .df-section p {
+        font-size: 18px;
+    }
+
+    .df-section .cta {
+        font-size: 15px;
+    }
+
+    .df2016-closerlook {
+        font-size: 22px;
+        margin: 36px 0 24px;
+    }
+}
+
+/* end Design Forecast landing page */
+
+/* WPS 2016 U.S. */
+.wps2016-summary {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.wps2016-summary .content-two-columns-col {
+    padding-right: 40px;
+}
+
+.wps2016-summary .content-two-columns-col .wps2016-summary-col1 {
+    font-size: 32px;
+    color: #666;
+}
+
+.slot-content .wps2016-summary-learn-more {
+    display: block;
+    border: 2px solid #f6842b;
+    padding: 15px;
+    max-width: 420px;
+    font-size: 24px;
+    margin-top: 25px;
+    color: #000;
+}
+
+.slot-content .wps2016-summary-learn-more:hover {
+    color: #f6842b;
+    text-decoration: none;
+}
+
+.wps2016-separator>div {
+    background-position: left center !important;
+    height: 42px !important;
+    max-width: 1024px;
+    margin: auto;
+}
+
+.wps2016-title {
+    font-size: 32px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 1.1;
+    margin: 2px 0 25px 0;
+}
+
+.wps2016-title2 {
+    font-size: 50px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+.wps2016-title3 {
+    font-family: KievitWebExtraBold;
+    font-size: 32px;
+    letter-spacing: -1px;
+    margin-bottom: 2px;
+    margin-top: 20px;
+}
+
+.wps2016-title3-content {
+    font-size: 18px;
+}
+
+.wps2016-title-mt {
+    margin-top: 68px;
+}
+
+.wps2016-title-mb {
+    margin-bottom: 36px;
+}
+
+.wps2016-title-mb100 {
+    margin-bottom: 100px;
+}
+
+.wps2016-key-factors {
+    font-size: 18px;
+    margin-top: 40px;
+    margin-bottom: 16px;
+}
+
+.wps2016-chart1 {
+    margin-bottom: 52px;
+}
+
+.content-three-columns {
+    overflow: hidden;
+}
+
+.content-three-columns-plus {
+    margin-top: 15px;
+    margin-bottom: 50px;
+}
+
+.content-three-columns-col {
+    width: 33%;
+    float: left;
+    position: relative;
+}
+
+.content-three-columns-inner {
+    padding: 0 10%;
+}
+
+.content-three-columns-icon {
+    text-align: center;
+    color: #000;
+}
+
+.content-three-columns-icon-img img {
+    display: block;
+    margin: auto;
+}
+
+.content-three-columns-icon strong {
+    text-transform: uppercase;
+}
+
+.content-three-columns-icon-img {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.content-three-columns-icon-img.plus::after {
+    content: "+";
+    font-family: KievitWebExtraBold;
+    font-size: 52px;
+    margin-top: -13px;
+    position: absolute;
+    right: -20%;
+    top: 50%;
+}
+
+.content-three-columns-icon p {
+    margin: auto;
+    max-width: 200px;
+    font-size: 18px;
+    line-height: 1.1;
+}
+
+.content-three-columns-icon .large {
+    font-size: 24px;
+    max-width: 220px;
+}
+
+.wps2016-carousel {
+    padding-bottom: 82px;
+}
+
+@media (max-width: 1024px) {
+
+    .wps2016-summary-learn-more,
+    .content-three-columns-icon .large {
+        font-size: 21px;
+    }
+
+    .content-three-columns {
+        margin-bottom: 43px;
+    }
+
+    .wps2016-summary {
+        padding-top: 51px;
+        padding-bottom: 51px;
+    }
+
+    .wps2016-summary .content-two-columns-col p {
+        font-size: 16px;
+    }
+
+    .wps2016-summary .content-two-columns-col .wps2016-summary-col1 {
+        font-size: 28px;
+    }
+
+    .wps2016-title {
+        font-size: 28px;
+    }
+
+    .wps2016-title3 {
+        font-size: 28px;
+        margin-top: 17px;
+    }
+
+    .wps2016-title2 {
+        font-size: 43px;
+        margin-top: 22px;
+        margin-bottom: 8px;
+    }
+
+    .content-three-columns-icon p,
+    .wps2016-title3-content,
+    .wps2016-key-factors {
+        font-size: 16px;
+    }
+
+    .wps2016-key-factors {
+        margin-top: 34px;
+    }
+
+    .wps2016-carousel {
+        padding-bottom: 70px;
+    }
+
+    .wps2016-title-mb {
+        margin-bottom: 31px;
+    }
+
+    .wps2016-title-mt {
+        margin-top: 58px;
+    }
+
+    .wps2016-title-mb100 {
+        margin-bottom: 85px;
+    }
+}
+
+@media (max-width: 678px) {
+    .wps2016-hero-overlay {
+        display: none;
+    }
+
+    .content-three-columns {
+        margin-bottom: 0;
+    }
+
+    .content-three-columns-col {
+        width: auto;
+        float: none;
+        margin-bottom: 30px;
+    }
+
+    .content-three-columns-icon-img.plus::after {
+        content: "";
+    }
+
+    .content-three-columns-icon-img img {
+        width: 132px;
+    }
+
+    .content-three-columns-icon p,
+    .wps2016-title3-content,
+    .wps2016-key-factors {
+        font-size: 15px;
+        line-height: 1.2;
+    }
+
+    .wps2016-key-factors {
+        margin-top: 25px;
+    }
+
+    .wps2016-summary .content-two-columns-col .wps2016-summary-col1 {
+        font-size: 17px;
+    }
+
+    .wps2016-summary .content-two-columns-col p {
+        font-size: 15px;
+    }
+
+    .wps2016-summary-learn-more {
+        display: none;
+    }
+
+    .wps2016-summary .content-two-columns-col {
+        padding-right: 10px;
+    }
+
+    .wps2016-summary {
+        padding-top: 25px;
+        padding-bottom: 18px;
+    }
+
+    .wps2016-title {
+        font-size: 17px;
+        padding-right: 16px;
+    }
+
+    .wps2016-separator {
+        padding: 0 10px;
+    }
+
+    .wps2016-chart1 {
+        margin-bottom: 10px;
+    }
+
+    .wps2016-separator>div {
+        height: 32px !important;
+    }
+
+    .wps2016-title3 {
+        font-size: 17px;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        margin-top: 10px;
+    }
+
+    .wps2016-summary-learn-more,
+    .content-three-columns-icon .large {
+        font-size: 15px;
+    }
+
+    .wps2016-title2 {
+        font-size: 20px;
+        margin-top: 16px;
+        margin-bottom: 2px;
+    }
+
+    .wps2016-title-mt {
+        margin-top: 20px;
+    }
+
+    .wps2016-title-mb {
+        margin-bottom: 18px;
+    }
+
+    .wps2016-title-mb100 {
+        margin-bottom: 40px;
+    }
+
+    .wps2016-carousel {
+        padding-bottom: 2px;
+    }
+}
+
+/* end WPS 2016 U.S. */
+
+/* Homepage Hero for WPS 2016 */
+.hero-homepage-wps2016-title,
+.hero-homepage-wps2016-title2 {
+    font-family: "KievitWebExtraBold";
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.04;
+}
+
+.hero-homepage-wps2016-title {
+    padding-top: 50px;
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.hero-homepage-wps2016-title2 {
+    font-size: 62px;
+}
+
+.hero-homepage-wps2016-caption {
+    font-family: KievitWeb;
+    font-size: 18px;
+    line-height: 1.2;
+    padding: 6px;
+}
+
+@media (max-width: 1023px) {
+    .hero-homepage-wps2016-title {
+        padding-top: 30px;
+        font-size: 18px;
+    }
+
+    .hero-homepage-wps2016-title2 {
+        font-size: 52px;
+    }
+}
+
+@media (max-width: 678px) {
+    .hero-homepage-wps2016-caption {
+        padding: 0;
+        font-size: 16px;
+    }
+
+    .hero-homepage-wps2016-caption br {
+        display: none;
+    }
+}
+
+/* end Homepage Hero for WPS 2016 */
+
+.dflive-speaker-thumb {
+    width: 112px;
+    float: left;
+}
+
+/* DF 2017 */
+.custom-page-title-01 {
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 30px;
+    margin-top: 1px;
+    text-transform: uppercase;
+}
+
+.custom-page-title-number {
+    font-family: "DINNextW01-CondensedBol", "KievitWebExtraBold", Verdana, Helvetica, Arial, sans-serif;
+    font-size: 60px;
+    line-height: 1;
+    margin: 0 0 0 0;
+}
+
+.df2017-color-gray-01 {
+    color: #7f8688;
+}
+
+.df2017-color-yellow {
+    color: #ffd938;
+}
+
+.df2017-color-orange {
+    color: #f68a33;
+}
+
+.df2017-color-blue {
+    color: #60cbea;
+}
+
+.df2017-color-green {
+    color: #8dc63f;
+}
+
+.df2017-backgroundcolor-yellow {
+    background-color: #ffd938;
+}
+
+.df2017-backgroundcolor-green {
+    background-color: #8dc63f;
+}
+
+.df2017-backgroundcolor-orange {
+    background-color: #f68a33;
+}
+
+.df2017-backgroundcolor-blue {
+    background-color: #60cbea;
+}
+
+.df2017-bg-color-gray-light {
+    background-color: #f2f2f2;
+}
+
+.df2017-callout-box {
+    padding: 12px 12px 12px 12px;
+    margin: 24px 0 24px 0;
+}
+
+.df2017-custom-page-feature-title {
+    font-family: "KievitWebExtraBold", Verdana, Helvetica, Arial, sans-serif;
+    font-size: 60px;
+    line-height: 1;
+    margin: 0 0 0 0;
+}
+
+.df2017-custom-page-feature-title sup {
+    top: -1.4em;
+}
+
+.df2017-custom-page-feature-sub-title {
+    font-family: "KievitWebExtraBold", Verdana, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 24px 0 24px 0;
+}
+
+.df2017-custom-page-feature-sub-title-02 {
+    font-family: "KievitWebExtraBold", Verdana, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0 0 24px 0;
+}
+
+.df2017-custom-page-feature-sub-title ul li {
+    line-height: 1.1em;
+    margin: 6px 0 0 0;
+}
+
+.df2017-custom-page-portrait-quote-01 {
+    margin: 20px 0 24px 0;
+    padding: 0;
+    min-height: 140px;
+    position: relative;
+}
+
+.df2017-custom-page-portrait-quote-01 img {
+    float: left;
+    margin: 0;
+    padding: 0 8px 8px 0;
+}
+
+@media (max-width: 1023px) {
+    .df2017-custom-page-portrait-quote-01 img {
+        width: 84px;
+    }
+}
+
+@media (max-width: 678px) {
+    .df2017-custom-page-portrait-quote-01 img {
+        width: 66px;
+    }
+
+    .df2017-custom-page-feature-title {
+        font-size: 48px;
+    }
+
+    .df2017-custom-page-feature-title sup {
+        top: -1em;
+    }
+}
+
+.df2017-quote-text-container {
+    margin: 0;
+    padding: 10px 10px 0 10px;
+    position: relative;
+}
+
+.df2017-takeaways-list li {
+    padding-top: 8px;
+}
+
+/* Design Forecast 2017 landing page */
+.df2017-hero-overlay {
+    line-height: 1;
+    padding: 55px 0 72px 0;
+    overflow: hidden;
+}
+
+.df2017-hero-overlay-title {
+    padding-bottom: 80px;
+    width: 66.61%;
+    padding-left: 18.12%;
+}
+
+.df2017-hero-overlay-title img {
+    position: static;
+    width: 100%;
+}
+
+.df2017-hero-overlay-box {
+    background: #fff;
+    background: rgba(255, 255, 255, 0.8);
+    width: 32.53%;
+    padding: 1%;
+    float: right;
+    margin-right: 15.35%;
+}
+
+.df2017-hero-overlay-box-title {
+    font-size: 18px;
+    padding-bottom: 12px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+}
+
+.df2017-hero-overlay-box-title>img {
+    height: auto;
+    width: 18.07%;
+    position: static;
+    vertical-align: baseline;
+}
+
+.df2017-hero-overlay-box-copy {
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+/* end Design Forecast 2017 landing page */
+
+.dialogue30_spacing_01 {
+    margin: 28px 0 0 0;
+}
+
+.dialogue30_hr_01 {
+    background-color: #000000;
+    height: 2px;
+    border: 0;
+}
+
+.dialogue30_hr_02 {
+    background-color: #000000;
+    height: 1px;
+    border: 0;
+}
+
+.dialogue30_contributors {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.dialogue30_contributors li {
+    float: left;
+    list-style-type: none;
+    margin: 12px 32px 24px 0;
+}
+
+.dialogue30_contributors li img {
+    margin: 0 0 8px 0;
+}
+
+.dialogue30_drop-cap {
+    font-family: "TradeGothicNextW01-Cond";
+    float: left;
+    width: auto;
+    margin: 11px 8px 11px 0;
+    font-size: 78px;
+    line-height: 0.5;
+    color: #000;
+}
+
+a.dialogue-30-link {
+    color: #f4855f;
+}
+
+a:hover.dialogue-30-link {
+    background-color: #f4855f;
+    color: #ffffff;
+}
+
+.dialogue30_sidebar_01 ol {
+    margin: 12px 0 12px 0;
+    line-height: 12px;
+}
+
+.dialogue30_sidebar_01 li {
+    float: left;
+    width: 140px;
+    margin: 0 28px 24px 0;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+@media (max-width: 678px) {
+    .dialogue30_sidebar_01 li {
+        float: left;
+        width: 240px;
+        margin: 0 28px 24px 0;
+        font-size: 15px;
+        line-height: 18px;
+    }
+}
+
+.dialogue30_sidebar_01 img {
+    margin: 2px 0 18px 0;
+}
+
+/*DIALOGUE 31*/
+.homepage-hero-d31-logo {
+    font-size: 132px;
+    font-family: "KievitWebBlack", "KievitWebBold", "KievitWeb", sans-serif;
+    line-height: 1;
+    letter-spacing: -4.4px;
+    margin-top: 50px;
+    color: #fff;
+}
+
+.homepage-hero-d31-logo-mobile {
+    font-size: 34px;
+    font-family: "KievitWebBlack", "KievitWebBold", "KievitWeb", sans-serif;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.dialogue31-pullquote-01 {
+    font-size: 28px;
+    font-family: KievitWebBold;
+    line-height: 1.2;
+}
+
+.dialogue31-pullquote-01 a {
+    color: #f48540;
+}
+
+.dialogue31-pullquote-01 a:hover {
+    text-decoration: underline;
+}
+
+.dialogue31-pullquote-02 {
+    font-size: 34px;
+    font-family: KievitWebBold;
+    line-height: 1.2;
+}
+
+.dialogue31-border1 {
+    border: 1px solid #000;
+    border-width: 1px 0 1px 0;
+    padding: 24px 0;
+}
+
+.dialogue31-border-top-2 {
+    border: 1px solid #000;
+    border-width: 1px 0 0 0;
+    padding: 12px 0 0 0;
+}
+
+.overlay-wrapper {
+    z-index: 200;
+}
+
+.overlay-wrapper .slot-content-html {
+    overflow: visible;
+}
+
+.attribution-01 {
+    font-size: 18px;
+    font-weight: normal;
+    padding: 2px 0 0 0;
+}
+
+.dialogue-detail-page-section-header-01 {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.dialogue-callout-stat-01-wrapper {
+    margin-top: 16px;
+    line-height: .8;
+}
+
+.dialogue-callout-stat-02-wrapper {
+    margin: 8px 0 0 0;
+    line-height: 1.1;
+}
+
+.dialogue-callout-stat-03-wrapper {
+    margin: -16px 0 8px 0;
+    line-height: 1.2;
+}
+
+.dialogue-callout-stat-04-wrapper {
+    margin: 32px 0 40px 0;
+}
+
+.dialogue-callout-stat-01 {
+    font-size: 80px;
+    font-family: "KievitWebExtraBold";
+    letter-spacing: -2px;
+}
+
+.dialogue-callout-stat-02 {
+    font-size: 80px;
+    font-family: "KievitWebExtraBold";
+    letter-spacing: -2px;
+    margin: -8px 0 0 0;
+    padding: 0 0 0 0;
+}
+
+
+/* Homepage hero caption with plus sign */
+.homepage-hero-plus {
+    padding: 10px 70px 6px 10px;
+}
+
+.homepage-hero-plus-title {
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-family: "TradeGothicNextW01-Cond", "KievitWebBold", sans-serif;
+}
+
+.homepage-hero-plus-title sup {
+    font-size: 12px;
+    top: -0.95em;
+}
+
+.homepage-hero-plus p {
+    font-family: "KievitWeb", sans-serif;
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.homepage-hero-plus-sign {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    font-family: "KievitWebLight", sans-serif;
+    font-size: 86px;
+    line-height: 1;
+    margin-top: -43px;
+    color: #f5852d;
+}
+
+.homepage-hero-plus-title-mobile sup {
+    font-size: 10px;
+    top: -0.95em;
+}
+
+/* end Homepage hero caption with plus sign */
+
+
+/* Homepage hero caption with arrow sign */
+.homepage-hero-arrow {
+    padding: 21px 106px 22px 22px;
+}
+
+.homepage-hero-arrow p {
+    font-family: "KievitWeb", sans-serif;
+    font-size: 22px;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.homepage-hero-arrow-sign {
+    position: absolute;
+    right: 35px;
+    top: 50%;
+    font-family: "KievitWebExtraLight", sans-serif;
+    font-size: 86px;
+    line-height: 1;
+    margin-top: -46px;
+    color: #f5852d;
+}
+
+@media (max-width: 1024px) {
+    .homepage-hero-arrow {
+        padding: 19px 104px 20px 20px;
+    }
+
+    .homepage-hero-arrow p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 860px) {
+    .homepage-hero-arrow {
+        padding: 16px 108px 16px 17px;
+    }
+
+    .homepage-hero-arrow p {
+        font-size: 18px;
+    }
+}
+
+/* end Homepage hero caption with arrow sign */
+
+
+
+.homepage-hero-dialogue-logo {
+    font-size: 132px;
+    font-family: "KievitWebLight", sans-serif;
+    line-height: 1;
+    letter-spacing: -4px;
+    margin-top: 50px;
+    color: #fff;
+}
+
+.homepage-hero-dialogue-logo-mobile {
+    font-size: 42px;
+    font-family: "KievitWebLight", sans-serif;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.homepage-hero-caption-title-01 {
+    font-size: 18px;
+    padding-bottom: 3px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+}
+
+.homepage-hero-headline-p-01 {
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.home-hero-mobile-headline-anchor:visited {
+    color: #ffffff;
+}
+
+/* Sustainability homepage hero */
+.home-climate-impact-hero-title {
+    font-family: Cardo, sans-serif;
+    font-weight: bold;
+    font-size: 80px;
+    color: #fff;
+    line-height: 1.14;
+    padding-top: 43px;
+    letter-spacing: 3px;
+}
+
+.home-climate-impact-hero-line {
+    display: block;
+    background-color: #fff;
+    width: 53px;
+    height: 8px;
+    margin: 11px 0 16px 0;
+}
+
+.home-climate-impact-hero-subtitle {
+    font-family: Cardo, sans-serif;
+    font-size: 66px;
+    color: #fff;
+    line-height: 1;
+}
+
+@media (max-width: 1128px) {
+    .home-climate-impact-hero-wrapper {
+        padding-left: 32px;
+    }
+}
+
+@media (max-width: 960px) {
+    .home-climate-impact-hero-title {
+        font-size: 60px;
+        padding-top: 33px;
+        letter-spacing: 2px;
+    }
+
+    .home-climate-impact-hero-line {
+        width: 40px;
+        height: 6px;
+        margin: 8px 0 12px 0;
+    }
+
+    .home-climate-impact-hero-subtitle {
+        font-size: 50px;
+    }
+}
+
+.dsd-meet-our-team-index-thumb {
+    float: left;
+    padding: 0 12px 16px 0;
+}
+
+/* Experience Index */
+.experience-index-branding-superscript {
+    vertical-align: super;
+    font-size: 13px;
+    padding-left: 2px;
+}
+
+.experience-index-branding-superscript-small {
+    font-size: 11px;
+    padding-left: 2px;
+    vertical-align: super;
+    line-height: 1;
+}
+
+/* Design Update 2018 */
+.slot-typical-top-padding-00 {
+    padding-top: 8px;
+}
+
+.slot-typical-top-padding-01 {
+    padding-top: 16px;
+}
+
+.slot-typical-top-padding-02 {
+    padding-top: 24px;
+}
+
+.slot-typical-top-padding-03 {
+    padding-top: 32px;
+}
+
+.slot-typical-top-padding-04 {
+    padding-top: 40px;
+}
+
+.slot-typical-top-padding-05 {
+    padding-top: 48px;
+}
+
+.slot-typical-top-padding-06 {
+    padding-top: 56px;
+}
+
+.slot-typical-top-padding-07 {
+    padding-top: 64px;
+}
+
+.slot-typical-top-padding-08 {
+    padding-top: 72px;
+}
+
+.slot-typical-bottom-padding-00 {
+    padding-bottom: 8px;
+}
+
+.slot-typical-bottom-padding-01 {
+    padding-bottom: 16px;
+}
+
+.slot-typical-bottom-padding-02 {
+    padding-bottom: 24px;
+}
+
+.slot-typical-bottom-padding-03 {
+    padding-bottom: 32px;
+}
+
+.slot-typical-bottom-padding-04 {
+    padding-bottom: 40px;
+}
+
+.slot-typical-bottom-padding-05 {
+    padding-bottom: 48px;
+}
+
+.slot-typical-bottom-padding-06 {
+    padding-bottom: 56px;
+}
+
+.slot-typical-bottom-padding-07 {
+    padding-bottom: 64px;
+}
+
+.slot-typical-bottom-padding-08 {
+    padding-bottom: 72px;
+}
+
+@media (max-width: 678px) {
+    .slot-typical-top-padding-00 {
+        padding-top: 4px;
+    }
+
+    .slot-typical-top-padding-01 {
+        padding-top: 8px;
+    }
+
+    .slot-typical-top-padding-02 {
+        padding-top: 12px;
+    }
+
+    .slot-typical-top-padding-03 {
+        padding-top: 16px;
+    }
+
+    .slot-typical-top-padding-04 {
+        padding-top: 20px;
+    }
+
+    .slot-typical-top-padding-05 {
+        padding-top: 24px;
+    }
+
+    .slot-typical-top-padding-06 {
+        padding-top: 28px;
+    }
+
+    .slot-typical-top-padding-07 {
+        padding-top: 32px;
+    }
+
+    .slot-typical-top-padding-08 {
+        padding-top: 36px;
+    }
+
+    .slot-typical-bottom-padding-00 {
+        padding-bottom: 4px;
+    }
+
+    .slot-typical-bottom-padding-01 {
+        padding-bottom: 8px;
+    }
+
+    .slot-typical-bottom-padding-02 {
+        padding-bottom: 12px;
+    }
+
+    .slot-typical-bottom-padding-03 {
+        padding-bottom: 16px;
+    }
+
+    .slot-typical-bottom-padding-04 {
+        padding-bottom: 20px;
+    }
+
+    .slot-typical-bottom-padding-05 {
+        padding-bottom: 24px;
+    }
+
+    .slot-typical-bottom-padding-06 {
+        padding-bottom: 28px;
+    }
+
+    .slot-typical-bottom-padding-07 {
+        padding-bottom: 32px;
+    }
+
+    .slot-typical-bottom-padding-08 {
+        padding-bottom: 36px;
+    }
+}
+
+
+.du-detail-page-section-header-01 {
+    font-size: 42px;
+    line-height: .95;
+}
+
+.du-detail-page-section-header-02 {
+    font-size: 24px;
+    line-height: .95;
+}
+
+.du-detail-page-text-light {
+    font-family: "KievitWebLight", Verdana, Helvetica, Arial, sans-serif;
+    letter-spacing: -2px;
+}
+
+.du-detail-page-text-black {
+    font-family: "KievitWebBlack", Verdana, Helvetica, Arial, sans-serif;
+    letter-spacing: -2px;
+}
+
+.du-special-color-maroon {
+    color: #8e1537;
+}
+
+.du-special-color-white {
+    color: #ffffff;
+}
+
+.ibd2018_3col-callout li img {
+    margin: 0 0 20px 0;
+}
+
+.ibd2018-article-intro-01 {
+    font-size: 24px;
+    font-family: KievitWebBold;
+    line-height: 1.2;
+}
+
+.global-pullquote-01 {
+    font-size: 24px;
+    font-family: KievitWebBold;
+    line-height: 1.2;
+}
+
+.global-pullquote-01 a {
+    color: #f48540;
+}
+
+.global-image-graphic-title-01 {
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    /*line-height: 1.2;*/
+}
+
+/*----- start DIALOGUE 33 -----*/
+.dialogue33_drop-cap {
+    float: left;
+    width: auto;
+    /*font-family: "TradeGothicNextW01-Cond";*/
+    margin: 19px 8px 11px 0;
+    font-size: 84px;
+    line-height: 0.5;
+    color: #000;
+}
+
+.dialogue33-intro-para {
+    font-size: 22px;
+    font-family: KievitWebBold;
+    line-height: 1.15;
+}
+
+.d33-anchor-link-block-header {
+    font-size: 16px;
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    margin: 40px 0 8px 0;
+}
+
+.d33-anchor-link-block-01 ul {
+    list-style-position: outside;
+    margin: 0 0 30px -16px;
+    padding: 0;
+}
+
+.d33-anchor-link-block-01 li {
+    margin: 8px 0 0 0;
+    padding: 0;
+    /*list-style-position: inside;*/
+    list-style-type: circle;
+}
+
+.d33-anchor-link-block-container {
+    margin: 0 0 36px 0;
+}
+
+.d33-hero-caption-01 {
+    font-size: 14px;
+    margin: 8px 0 0 0;
+    padding: 0;
+}
+
+.d33-related-inline-box-callout-intro {
+    font-size: 15px;
+}
+
+.d33-float-left-image-spacing {
+    width: 280px;
+    height: 407px;
+    margin-bottom: 12px;
+    margin-right: 20px;
+}
+
+.d33-section-headline-01 {
+    font-size: 32px;
+    line-height: 1.05;
+    text-transform: capitalize;
+}
+
+/*----- end DIALOGUE 33 -----*/
+
+/*----- start DIALOGUE 34 -----*/
+.d34-pullquote-01 {
+    font-family: "din-2014", "KievitWebBold";
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    border: 1px solid #000;
+    border-width: 1px 0 1px 0;
+    padding: 24px 0;
+}
+
+.d34-pullquote-small {
+    font-size: 24px;
+}
+
+.d34-pullquote-medium {
+    font-size: 32px;
+}
+
+.d34-pullquote-large {
+    font-size: 40px;
+}
+
+.d34-related-inline-box-callout-01 {
+    padding: 20px;
+    background-color: rgb(244, 244, 244);
+}
+
+.d34-related-inline-box-callout-01 .call-to-action-text {
+    font-size: 15px;
+}
+
+.d34-title-overlay {
+    position: absolute;
+    top: 140px;
+    width: 100%;
+    color: #000;
+}
+
+.d34-title1 {
+    font-size: 40px;
+    font-family: KievitWebBold;
+    line-height: 1.2;
+}
+
+.d34-border1 {
+    border-bottom: 5px solid #000;
+    padding-bottom: 16px;
+}
+
+.d34-attribution-01 {
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 10px 0 0 0;
+}
+
+@media(max-width: 860px) {
+    .d34-title1 {
+        font-size: 28px;
+    }
+}
+
+@media(max-width: 678px) {
+    d34-border1 {
+        border-bottom: none;
+        border-top: 1px solid #000;
+        padding-bottom: 0;
+        padding-top: 16px;
+    }
+}
+
+/*----- end DIALOGUE 34 -----*/
+
+.df2019-white {
+    color: #fff;
+}
+
+.df2019-pa-intro {
+    font-size: 22px;
+}
+
+.df2019-pullquote-01 {
+    font-family: "KievitWeb", Verdana, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    border: 1px solid #000;
+    border-width: 1px 0 1px 0;
+    padding: 24px 0;
+}
+
+.df2019-pullquote-small {
+    font-size: 24px;
+}
+
+.df2019-pullquote-medium {
+    font-size: 32px;
+}
+
+@media(max-width: 678px) {
+    .df2019-pullquote-small {
+        font-size: 24px;
+    }
+
+    .df2019-pullquote-medium {
+        font-size: 28px;
+    }
+}
+
+.df2019-attribution-01 {
+    font-size: 18px;
+    font-weight: normal;
+    padding: 4px 0 0 0;
+}
+
+.df2019-dark-grey {
+    color: #9f9f9f;
+}
+
+/*Dialogue 35 -- d35*/
+.d35-related-inline-box-callout-01 {
+    padding: 20px;
+    background-color: rgb(244, 244, 244);
+}
+
+/* U.S. WPS 2020 */
+.headers-in-flow-01 {
+    line-height: 1.2;
+}
+
+/* Dialogue coronavirus blog grid block */
+.dialogue-2020-grid-block-headline {
+    font-family: 'din-2014', 'KievitWebBold';
+    font-style: normal;
+    font-weight: bold;
+    line-height: 1.1;
+    font-size: 38px;
+    color: #000000;
+    padding: 5% 3%;
+}
+
+/* Impact By Design 2020 */
+.ibd2020-grid-block-headline {
+    font-size: 44px;
+    font-family: 'KievitWebBold', Verdana, Helvetica, Arial, sans-serif;
+    line-height: .9;
+    padding: 5% 3%;
+}
+
+.ibd2020-article-intro-text {
+    font-size: 22px;
+    font-family: 'KievitWebBold', Verdana, Helvetica, Arial, sans-serif;
+    line-height: 1.25;
+}
+
+@media(max-width: 648px) {
+    .ibd2020-article-intro-text {
+        font-size: 20px;
+    }
+}
+
+.ibd2020-page-title {
+    font-size: 36px;
+    margin: 0;
+    line-height: 1.05;
+}
+
+.ibd2020-page-description {
+    font-size: 36px;
+    line-height: 1.05;
+}
+
+@media(max-width: 648px) {
+    .ibd2020-page-description {
+        font-size: 30px;
+    }
+
+    .ibd2020-page-title {
+        font-size: 30px;
+    }
+}
+
+.ibd2020-pullquote-01 {
+    font-family: "KievitWebBold", Verdana, Helvetica, Arial, sans-serif;
+    ;
+    font-style: normal;
+    line-height: 1.2;
+    border: 1px solid #000;
+    border-width: 1px 0 1px 0;
+    padding: 24px 0;
+}
+
+.ibd2020-pullquote-medium {
+    font-size: 32px;
+}
+
+@media(max-width: 648px) {
+    .ibd2020-pullquote-medium {
+        font-size: 28px;
+    }
+}
+
+/* 2020 WFH SURVEY */
+.wfh-survey-section-headline-01 {
+    font-size: 22px;
+}
+
+/* 2020 Annual Report - Firm Profile */
+.ar2020-grid-block-intro-text {
+    font-size: 18px;
+}
+
+.ar2020-grid-block-intro-text a {
+    color: #f48540;
+}
+
+.ar2020-grid-block-intro-text a:hover {
+    text-decoration: underline;
+}
+
+/* 2020 CITY PULSE SURVEY */
+.cps2020-survey-section-headline-01 {
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+/* Slot spacing */
+.slot-spacing-1 {
+    padding-top: 8px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-1 {
+        padding-top: 8px;
+    }
+}
+
+.slot-spacing-2 {
+    padding-bottom: 8px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-2 {
+        padding-bottom: 8px;
+    }
+}
+
+.slot-spacing-3 {
+    padding-top: 16px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-3 {
+        padding-top: 12px;
+    }
+}
+
+.slot-spacing-4 {
+    padding-bottom: 16px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-4 {
+        padding-bottom: 12px;
+    }
+}
+
+.slot-spacing-5 {
+    padding-top: 24px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-5 {
+        padding-top: 18px;
+    }
+}
+
+.slot-spacing-6 {
+    padding-bottom: 24px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-6 {
+        padding-bottom: 18px;
+    }
+}
+
+.slot-spacing-7 {
+    padding-top: 32px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-7 {
+        padding-top: 24px;
+    }
+}
+
+.slot-spacing-8 {
+    padding-bottom: 32px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-8 {
+        padding-bottom: 24px;
+    }
+}
+
+.slot-spacing-9 {
+    padding-top: 40px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-9 {
+        padding-top: 30px;
+    }
+}
+
+.slot-spacing-10 {
+    padding-bottom: 40px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-10 {
+        padding-bottom: 30px;
+    }
+}
+
+.slot-spacing-11 {
+    padding-top: 48px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-11 {
+        padding-top: 36px;
+    }
+}
+
+.slot-spacing-12 {
+    padding-bottom: 48px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-12 {
+        padding-bottom: 36px;
+    }
+}
+
+.slot-spacing-13 {
+    padding-top: 56px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-13 {
+        padding-top: 42px;
+    }
+}
+
+.slot-spacing-14 {
+    padding-bottom: 56px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-14 {
+        padding-bottom: 42px;
+    }
+}
+
+.slot-spacing-15 {
+    padding-top: 64px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-15 {
+        padding-top: 48px;
+    }
+}
+
+.slot-spacing-16 {
+    padding-bottom: 64px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-16 {
+        padding-bottom: 48px;
+    }
+}
+
+.slot-spacing-17 {
+    padding-top: 72px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-17 {
+        padding-top: 54px;
+    }
+}
+
+.slot-spacing-18 {
+    padding-bottom: 72px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-18 {
+        padding-bottom: 54px;
+    }
+}
+
+.slot-spacing-20 {
+    margin-top: 8px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-20 {
+        margin-top: 6px;
+    }
+}
+
+.slot-spacing-21 {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-21 {
+        margin-bottom: 6px;
+    }
+}
+
+.slot-spacing-22 {
+    margin-bottom: 16px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-22 {
+        margin-bottom: 12px;
+    }
+}
+
+.slot-spacing-23 {
+    margin-top: 24px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-23 {
+        margin-top: 12px;
+    }
+}
+
+.slot-spacing-24 {
+    margin-bottom: 24px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-24 {
+        margin-bottom: 12px;
+    }
+}
+
+.slot-spacing-25 {
+    margin-top: 32px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-25 {
+        margin-top: 16px;
+    }
+}
+
+.slot-spacing-26 {
+    margin-bottom: 32px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-26 {
+        margin-bottom: 16px;
+    }
+}
+
+.slot-spacing-27 {
+    margin-top: 40px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-27 {
+        margin-top: 20px;
+    }
+}
+
+.slot-spacing-28 {
+    margin-bottom: 40px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-28 {
+        margin-bottom: 20px;
+    }
+}
+
+.slot-spacing-29 {
+    margin-top: 48px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-29 {
+        margin-top: 24px;
+    }
+}
+
+.slot-spacing-30 {
+    margin-bottom: 48px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-30 {
+        margin-bottom: 24px;
+    }
+}
+
+.slot-spacing-31 {
+    margin-top: 56px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-31 {
+        margin-top: 28px;
+    }
+}
+
+.slot-spacing-32 {
+    margin-bottom: 56px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-32 {
+        margin-bottom: 28px;
+    }
+}
+
+.slot-spacing-33 {
+    margin-top: 64px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-33 {
+        margin-top: 32px;
+    }
+}
+
+.slot-spacing-34 {
+    margin-bottom: 64px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-34 {
+        margin-bottom: 32px;
+    }
+}
+
+.slot-spacing-35 {
+    margin-top: 72px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-35 {
+        margin-top: 36px;
+    }
+}
+
+.slot-spacing-36 {
+    margin-bottom: 72px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-36 {
+        margin-bottom: 36px;
+    }
+}
+
+.slot-spacing-37 {
+    margin-top: 16px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-37 {
+        margin-top: 12px;
+    }
+}
+
+.slot-spacing-38 {
+    padding-top: 88px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-38 {
+        padding-top: 54px;
+    }
+}
+
+.slot-spacing-39 {
+    padding-bottom: 88px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-39 {
+        padding-bottom: 54px;
+    }
+}
+
+.slot-spacing-40 {
+    padding-top: 80px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-40 {
+        padding-top: 50px;
+    }
+}
+
+.slot-spacing-41 {
+    padding-bottom: 80px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-41 {
+        padding-bottom: 50px;
+    }
+}
+
+.slot-spacing-42 {
+    padding-top: 96px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-42 {
+        padding-top: 60px;
+    }
+}
+
+.slot-spacing-43 {
+    padding-bottom: 96px;
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-43 {
+        padding-bottom: 60px;
+    }
+}
+
+.slot-spacing-44 {
+    margin-top: 25px;
+}
+
+.slot-spacing-45 {
+    margin-top: 10px;
+}
+
+.slot-spacing-46 {
+    padding-top: 104px;
+}
+
+@media (max-width: 767px) {
+    .slot-spacing-46 {
+        padding-top: 72px;
+    }
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-46 {
+        padding-top: 64px;
+    }
+}
+
+.slot-spacing-47 {
+    padding-bottom: 104px;
+}
+
+@media (max-width: 767px) {
+    .slot-spacing-47 {
+        padding-bottom: 72px;
+    }
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-47 {
+        padding-bottom: 64px;
+    }
+}
+
+.slot-spacing-48 {
+    padding-top: 120px;
+}
+
+@media (max-width: 767px) {
+    .slot-spacing-48 {
+        padding-top: 90px;
+    }
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-48 {
+        padding-top: 75px;
+    }
+}
+
+.slot-spacing-49 {
+    padding-bottom: 120px;
+}
+
+@media (max-width: 767px) {
+    .slot-spacing-49 {
+        padding-bottom: 90px;
+    }
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-49 {
+        padding-bottom: 75px;
+    }
+}
+
+.slot-spacing-50 {
+    padding-top: 110px;
+}
+
+@media (max-width: 767px) {
+    .slot-spacing-50 {
+        padding-top: 84px;
+    }
+}
+
+@media (max-width: 678px) {
+    .slot-spacing-50 {
+        padding-top: 70px;
+    }
+}
+
+.slot-spacing-51 {
+    padding-bottom: 110px;
+}

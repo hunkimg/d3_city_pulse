@@ -1,0 +1,22 @@
+{
+  "Africa": "#b03552",
+  "Asia Pacific": "#f18445",
+  "Europe": "#79c27e",
+  "Latin/South America": "#deb054",
+  "Middle East": "#ac84ba",
+  "North America": "#0081b1",
+  "Agree": "#e9495d",
+  "Neutral": "#db7a2f",
+  "Disagree": "#39b7a0",
+  "All Personas": "#e9495d",
+  "Employee": "#db7a2f",
+  "Resident": "#39b7a0",
+  "Visitor": "#ac84ba",
+  "Northwest": "#b91f49",
+  "Northcentral": "#ffcf80",
+  "Northeast": "#4796b6",
+  "Southwest": "#ee6b4c",
+  "Southcentral": "#a1d4a2",
+  "Southeast": "#5d56a5",
+  "Global": "#555555"
+}
