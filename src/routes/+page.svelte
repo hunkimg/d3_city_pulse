@@ -23,7 +23,7 @@
   const regions = [...new Set(citiesData.map((city) => city.Region))];
   const regionalData = citiesData.filter((city) => city.Region !== "Global");
   let selectedCities: Array<(typeof citiesData)[0]> = regionalData.filter(
-    (el) => el.visible
+    (el) => el.visible,
   );
 
   // Handle city selection from dropdown
@@ -67,5 +67,6 @@
   .chart-container {
     flex: 1;
     min-height: 0;
+    height: auto;
   }
 </style>
