@@ -24,6 +24,13 @@
     null,
     undefined
   >;
+  let backgroundCircleHighlightLayer: d3.Selection<
+    SVGGElement,
+    unknown,
+    null,
+    undefined
+  >;
+
   let frontLayer: d3.Selection<SVGGElement, unknown, null, undefined>;
   let frontPolygonLayer: d3.Selection<SVGGElement, unknown, null, undefined>;
   let frontCircleLayer: d3.Selection<SVGGElement, unknown, null, undefined>;
@@ -35,6 +42,8 @@
   let tooltipCity = "";
   let tree: any = null;
   let hoveringCity: string | null = null;
+  let hoveringMetric: string = "";
+  let hoveringMetricValue: number = 0;
   let isInitialTransitionDone = false;
   const UPDATE_TIMEOUT = 1000;
 
@@ -58,10 +67,6 @@
     const svgSel = d3.select(svg);
     svgSel.selectAll("*").remove();
 
-    // svg.setAttribute(
-    //   "viewBox",
-    //   `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`,
-    // );
     svg.setAttribute("width", `${width}`);
     svg.setAttribute("height", `${height}`);
 
@@ -79,6 +84,9 @@
     backgroundPolygonLayer = backgroundLayer
       .append("g")
       .attr("class", "background-polygon-layer");
+    backgroundCircleHighlightLayer = backgroundLayer
+      .append("g")
+      .attr("class", "background-circle-highlight-layer");
     frontLayer = chartGroup.append("g").attr("class", "front-layer");
     frontPolygonLayer = frontLayer
       .append("g")
@@ -118,6 +126,38 @@
         .attr("y2", radius * Math.sin(angleSlice * i - Math.PI / 2))
         .attr("stroke", "#888888")
         .attr("stroke-width", 0.5);
+    });
+
+    // add labels
+    // Remove old labels
+    backgroundAxesLayer.selectAll("text.axis-label").remove();
+
+    // add one circle for background circle highlight layer
+    backgroundCircleHighlightLayer
+      .selectAll("circle")
+      .data([null])
+      .join("circle")
+      .attr("r", 16)
+      .attr("fill", "none")
+      .attr("fill-opacity", 0)
+      .attr("pointer-events", "none");
+
+    // Add new labels
+    metrics.forEach((metric, i) => {
+      const angle = angleSlice * i - Math.PI / 2;
+      const labelRadius = radius + 18; // distance from center
+      backgroundAxesLayer
+        .append("text")
+        .attr("class", "axis-label")
+        .attr("x", labelRadius * Math.cos(angle))
+        .attr("y", labelRadius * Math.sin(angle))
+        .attr("dy", "0.35em")
+        .attr("text-anchor", () => {
+          if (angle > -Math.PI / 2 && angle < Math.PI / 2) return "start";
+          if (angle > Math.PI / 2 || angle < -Math.PI / 2) return "end";
+          return "middle";
+        })
+        .text(metric.replace(/_/g, " "));
     });
   }
 
@@ -284,6 +324,7 @@
         return {
           city: d.City,
           metric,
+          value,
           x: radius * value * Math.cos(angleSlice * i - Math.PI / 2),
           y: radius * value * Math.sin(angleSlice * i - Math.PI / 2),
           color: colors[d.Region as keyof typeof colors] || "#999",
@@ -324,8 +365,11 @@
 
         if (nearest.length > 0) {
           const point = nearest[0][0];
+
           if (hoveringCity !== point.city) {
             hoveringCity = point.city;
+            hoveringMetric = point.metric;
+            hoveringMetricValue = point.value;
 
             frontPolygonLayer
               .selectAll<SVGPolygonElement, CityPulseDataType>(
@@ -346,6 +390,20 @@
               .duration(150)
               .attr("fill-opacity", (d) => (d.City === point.city ? 0.3 : 0));
 
+            // Move the highlight circle to the hovered point
+            backgroundCircleHighlightLayer
+              .selectAll("circle")
+              .transition()
+              .duration(150)
+              .attr("cx", point.x)
+              .attr("cy", point.y)
+              .attr("r", 16)
+              .attr("stroke", point.color)
+              .attr("stroke-width", 3)
+              .attr("fill", "none")
+              .attr("fill-opacity", 0.2)
+              .attr("pointer-events", "none");
+
             frontCircleLayer
               .selectAll<SVGCircleElement, { city: string }>(
                 "circle.front-circle",
@@ -354,8 +412,12 @@
               .duration(150)
               .attr("fill-opacity", (d) => (d.city === point.city ? 1 : 0.3));
 
-            tooltipX = event.clientX;
-            tooltipY = event.clientY;
+            // tooltipX = event.clientX;
+            // tooltipY = event.clientY;
+            // Convert chart (SVG) coordinates to screen coordinates for tooltip
+            const svgRect = svg.getBoundingClientRect();
+            tooltipX = svgRect.left + width / 2 + point.x;
+            tooltipY = svgRect.top + height / 2 + point.y;
             tooltipCity = point.city;
             showTooltip = true;
           }
@@ -393,6 +455,15 @@
           .duration(150)
           .ease(d3.easeCubic)
           .attr("fill-opacity", 1);
+
+        backgroundCircleHighlightLayer
+          .selectAll("circle")
+          .transition()
+          .duration(150)
+          .attr("r", 0)
+          .attr("stroke", "none")
+          .attr("cx", 0)
+          .attr("cy", 0);
       });
   });
 
@@ -404,8 +475,19 @@
 <div bind:this={container} class="chart-container">
   <svg bind:this={svg} class="chart-svg" {width} {height}></svg>
   {#if showTooltip}
-    <div class="tooltip" style="left: {tooltipX}px; top: {tooltipY}px;">
-      <Tooltip cityName={tooltipCity} />
+    <div
+      class="tooltip"
+      style="
+      left: {tooltipX}px;
+      top: {tooltipY}px;
+      transition: left 0.2s cubic-bezier(0.4,0,0.2,1), top 0.2s cubic-bezier(0.4,0,0.2,1);
+      "
+    >
+      <Tooltip
+        cityName={tooltipCity}
+        metricName={hoveringMetric}
+        metricValue={hoveringMetricValue}
+      />
     </div>
   {/if}
 </div>
