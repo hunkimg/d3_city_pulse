@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
   import colors from "../data/colors.json";
   import Tooltip from "./Tooltip.svelte";
   import * as d3 from "d3";
@@ -29,11 +29,14 @@
   let frontCircleLayer: d3.Selection<SVGGElement, unknown, null, undefined>;
   let legendGroup: d3.Selection<SVGGElement, unknown, null, undefined>;
 
-  let tooltipComponent: Tooltip;
   let showTooltip = false;
   let tooltipX = 0;
   let tooltipY = 0;
   let tooltipCity = "";
+  let tree: any = null;
+  let hoveringCity: string | null = null;
+  let isInitialTransitionDone = false;
+  const UPDATE_TIMEOUT = 1000;
 
   const margin = { top: 20, right: 20, bottom: 20, left: 20 };
   let radius = 0;
@@ -133,7 +136,7 @@
     backgroundPolygons
       .exit()
       .transition()
-      .duration(500)
+      .duration(UPDATE_TIMEOUT)
       .attr("points", metrics.map(() => "0,0").join(" "))
       .remove();
 
@@ -143,20 +146,19 @@
       .append("polygon")
       .attr("class", "background-city-polygon")
       .attr("points", metrics.map(() => "0,0").join(" "))
-      .attr("fill", "none");
-    // .attr(
-    //   "fill",
-    //   (d: CityPulseDataType) =>
-    //     colors[d.Region as keyof typeof colors] || "#999",
-    // )
-    // .attr("fill-opacity", 0.2);
+      .attr(
+        "fill",
+        (d: CityPulseDataType) =>
+          colors[d.Region as keyof typeof colors] || "#999",
+      )
+      .attr("fill-opacity", 0);
 
     // Update all polygons
 
     (backgroundPolygons as any)
       .merge(backgroundEnter)
       .transition()
-      .duration(1000)
+      .duration(UPDATE_TIMEOUT)
       .attr("points", (d: CityPulseDataType) => {
         return metrics
           .map((metric, i) => {
@@ -179,7 +181,7 @@
     frontPolygons
       .exit()
       .transition()
-      .duration(500)
+      .duration(UPDATE_TIMEOUT)
       .attr("points", metrics.map(() => "0,0").join(" "))
       .remove();
 
@@ -187,6 +189,7 @@
     const frontEnter = frontPolygons
       .enter()
       .append("polygon")
+      .attr("data-city", (d: CityPulseDataType) => d.City) // add this line
       .attr("class", "front-city-polygon")
       .attr("points", metrics.map(() => "0,0").join(" "))
       .attr("fill", "none")
@@ -202,7 +205,7 @@
       .merge(frontEnter)
       // .attr("stroke-width", 3)
       .transition()
-      .duration(1000)
+      .duration(UPDATE_TIMEOUT)
       .attr("points", (d: CityPulseDataType) => {
         return metrics
           .map((metric, i) => {
@@ -237,7 +240,7 @@
     frontCircles
       .exit()
       .transition()
-      .duration(500)
+      .duration(UPDATE_TIMEOUT / 2)
       .attr("r", 0)
       .attr(
         // make it go to center
@@ -260,24 +263,124 @@
     (frontCircles as any)
       .merge(circlesEnter)
       .transition()
-      .duration(1000)
+      .duration(UPDATE_TIMEOUT)
       .attr("r", 8)
       // Place each circle at the last metric's position (polygon endpoint)
       .attr("cx", (d: any) => d.x)
       .attr("cy", (d: any) => d.y);
+    updateKDTree();
+  }
+
+  function updateKDTree() {
+    const metrics = [...quantitativeColumns];
+    const angleSlice = (Math.PI * 2) / metrics.length;
+
+    const frontCirclesData = selectedCities.flatMap((d) =>
+      metrics.map((metric, i) => {
+        const value = Number(d[metric as keyof CityPulseDataType] || 0) / 100;
+        return {
+          city: d.City,
+          metric,
+          x: radius * value * Math.cos(angleSlice * i - Math.PI / 2),
+          y: radius * value * Math.sin(angleSlice * i - Math.PI / 2),
+          color: colors[d.Region as keyof typeof colors] || "#999",
+        };
+      }),
+    );
+
+    tree = new kdTree.kdTree(frontCirclesData, distance, ["x", "y"]);
   }
 
   $: if (svg && width > 0 && height > 0) {
     radius = Math.min(width, height) / 2 - 60;
     initializeChart();
+    isInitialTransitionDone = false;
     drawStaticElements();
     updateCityPolygons();
+    setTimeout(() => {
+      isInitialTransitionDone = true;
+    }, 1000); // or slightly longer than your transition duration
   }
 
   // Add a separate reactive statement for selectedCities changes
   $: if (svg && selectedCities) {
+    isInitialTransitionDone = false;
     updateCityPolygons();
+    setTimeout(() => {
+      isInitialTransitionDone = true;
+    }, 1000); // or slightly longer than your transition duration
   }
+
+  onMount(() => {
+    d3.select(svg)
+      .on("mousemove", (event: MouseEvent) => {
+        if (!tree || !isInitialTransitionDone) return;
+
+        const [x, y] = d3.pointer(event, chartGroup.node()); // center-based coordinates
+        const nearest = tree.nearest({ x, y }, 1);
+
+        if (nearest.length > 0) {
+          const point = nearest[0][0];
+          if (hoveringCity !== point.city) {
+            hoveringCity = point.city;
+
+            frontPolygonLayer
+              .selectAll<SVGPolygonElement, CityPulseDataType>(
+                "polygon.front-city-polygon",
+              )
+              .transition()
+              .duration(150)
+              .ease(d3.easeCubic)
+              .attr("stroke-opacity", (d) => (d.City === point.city ? 1 : 0.3))
+              .attr("fill-opacity", (d) => (d.City === point.city ? 0.3 : 0.1))
+              .attr("stroke-width", (d) => (d.City === point.city ? 4 : 2));
+
+            backgroundPolygonLayer
+              .selectAll<SVGPolygonElement, CityPulseDataType>(
+                "polygon.background-city-polygon",
+              )
+              .transition()
+              .duration(150)
+              .attr("fill-opacity", (d) => (d.City === point.city ? 0.3 : 0));
+
+            tooltipX = event.clientX;
+            tooltipY = event.clientY;
+            tooltipCity = point.city;
+            showTooltip = true;
+          }
+        }
+      })
+      .on("mouseleave", () => {
+        hoveringCity = null;
+        showTooltip = false;
+
+        frontPolygonLayer
+          .selectAll<
+            SVGPolygonElement,
+            CityPulseDataType
+          >("polygon.front-city-polygon")
+          .transition()
+          .duration(150)
+          .ease(d3.easeCubic)
+          .attr("stroke-opacity", 1)
+          .attr("fill-opacity", 0.1)
+          .attr("stroke-width", 3);
+
+        backgroundPolygonLayer
+          .selectAll<
+            SVGPolygonElement,
+            CityPulseDataType
+          >("polygon.background-city-polygon")
+          .transition()
+          .duration(150)
+          .ease(d3.easeCubic)
+          .attr("fill-opacity", 0);
+      });
+  });
+
+  // onDestroy(() => {
+  //   d3.select(svg).on("mousemove", null).on("mouseleave", null);
+  // });
 </script>
 
 <div bind:this={container} class="chart-container">
