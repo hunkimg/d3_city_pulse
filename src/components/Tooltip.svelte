@@ -8,7 +8,7 @@
 <div class="tooltip">
   <p>{cityName}</p>
   <p>{metricName}</p>
-  <p>{metricValue}</p>
+  <p>{Math.round(metricValue * 100)}</p>
 </div>
 
 <style>

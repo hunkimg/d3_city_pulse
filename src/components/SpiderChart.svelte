@@ -10,6 +10,7 @@
   export let height: number;
   export let quantitativeColumns: Set<string> = new Set();
   export const citiesData: Array<CityPulseDataType> = [];
+  export let globalData: Array<(typeof citiesData)[0]> = [];
   export let selectedCities: Array<(typeof citiesData)[0]> = [];
 
   let container: HTMLDivElement;
@@ -30,9 +31,27 @@
     null,
     undefined
   >;
+  let backgroundGlobalPolygonLayer: d3.Selection<
+    SVGGElement,
+    unknown,
+    null,
+    undefined
+  >;
 
   let frontLayer: d3.Selection<SVGGElement, unknown, null, undefined>;
   let frontPolygonLayer: d3.Selection<SVGGElement, unknown, null, undefined>;
+  let frontGlobalPolygonLayer: d3.Selection<
+    SVGGElement,
+    unknown,
+    null,
+    undefined
+  >;
+  let frontGlobalCircleLayer: d3.Selection<
+    SVGGElement,
+    unknown,
+    null,
+    undefined
+  >;
   let frontCircleLayer: d3.Selection<SVGGElement, unknown, null, undefined>;
   let legendGroup: d3.Selection<SVGGElement, unknown, null, undefined>;
 
@@ -46,8 +65,10 @@
   let hoveringMetricValue: number = 0;
   let isInitialTransitionDone = false;
   const UPDATE_TIMEOUT = 1000;
+  const STROKE_WIDTH = 2;
+  const NODE_RADIUS = 8;
 
-  const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+  const margin = { top: 50, right: 50, bottom: 50, left: 50 };
   let radius = 0;
 
   const distance = (
@@ -87,15 +108,29 @@
     backgroundCircleHighlightLayer = backgroundLayer
       .append("g")
       .attr("class", "background-circle-highlight-layer");
+    backgroundGlobalPolygonLayer = backgroundLayer
+      .append("g")
+      .attr("class", "background-global-polygon-layer");
+
     frontLayer = chartGroup.append("g").attr("class", "front-layer");
     frontPolygonLayer = frontLayer
       .append("g")
       .attr("class", "front-polygon-layer");
+    frontGlobalPolygonLayer = frontLayer
+      .append("g")
+      .attr("class", "front-global-polygon-layer");
+    frontGlobalCircleLayer = frontLayer
+      .append("g")
+      .attr("class", "front-global-circle-layer");
+    frontGlobalPolygonLayer = frontLayer
+      .append("g")
+      .attr("class", "front-global-polygon-layer");
     frontCircleLayer = frontLayer
       .append("g")
       .attr("class", "front-circle-layer");
     legendGroup = chartGroup.append("g").attr("class", "legend-group");
   }
+
   function drawStaticElements() {
     if (!chartGroup || quantitativeColumns.size === 0) return;
 
@@ -104,7 +139,7 @@
     const levels = 5;
 
     // Calculate radius based on width/height
-    radius = Math.min(width, height) / 2 - margin.top;
+    radius = Math.min(width, height) / 2 - margin.top - margin.bottom - 20;
 
     // Draw circular grid lines
     backgroundGridLayer
@@ -137,7 +172,7 @@
       .selectAll("circle")
       .data([null])
       .join("circle")
-      .attr("r", 16)
+      .attr("r", 12)
       .attr("fill", "none")
       .attr("fill-opacity", 0)
       .attr("pointer-events", "none");
@@ -159,6 +194,169 @@
         })
         .text(metric.replace(/_/g, " "));
     });
+  }
+
+  function drawGlobalStatistics() {
+    // Only render if there is data and at least one metric
+    console.log("Global Data inside drawGlobalStatistics:", globalData);
+    if (
+      !globalData ||
+      globalData.length === 0 ||
+      quantitativeColumns.size === 0
+    )
+      return;
+
+    console.log("Drawing global statistics with data:", globalData);
+
+    const metrics = [...quantitativeColumns];
+    const angleSlice = (Math.PI * 2) / metrics.length;
+
+    const backgroundGlobalPolygons = backgroundGlobalPolygonLayer
+      .selectAll("polygon")
+      .data(globalData);
+
+    // Remove old polygons
+    backgroundGlobalPolygons
+      .exit()
+      .transition()
+      .duration(UPDATE_TIMEOUT)
+      .attr("points", metrics.map(() => "0,0").join(" "))
+      .remove();
+
+    // Add new polygons
+    const backgroundGlobalEnter = backgroundGlobalPolygons
+      .enter()
+      .append("polygon")
+      .attr("data-city", (d: CityPulseDataType) => d.City)
+      .attr("class", "background-global-polygon")
+      .attr("points", metrics.map(() => "0,0").join(" "))
+      .attr(
+        "fill",
+        (d: CityPulseDataType) =>
+          colors[d.Region as keyof typeof colors] || "#999",
+      )
+      .attr("fill-opacity", 0.2);
+    // Update all polygons
+    (backgroundGlobalPolygons as any)
+      .merge(backgroundGlobalEnter)
+      .transition()
+      .duration(UPDATE_TIMEOUT)
+      .attr("points", (d: CityPulseDataType) => {
+        return metrics
+          .map((metric, i) => {
+            const value =
+              Number(d[metric as keyof CityPulseDataType] || 0) / 100;
+            return [
+              radius * value * Math.cos(angleSlice * i - Math.PI / 2),
+              radius * value * Math.sin(angleSlice * i - Math.PI / 2),
+            ].join(",");
+          })
+          .join(" ");
+      })
+      .attr(
+        "fill",
+        (d: CityPulseDataType) =>
+          colors[d.Region as keyof typeof colors] || "#999",
+      );
+
+    const frontGlobalPolygons = frontGlobalPolygonLayer
+      .selectAll("polygon")
+      .data(globalData);
+    // Remove old polygons
+    frontGlobalPolygons
+      .exit()
+      .transition()
+      .duration(UPDATE_TIMEOUT)
+      .attr("points", metrics.map(() => "0,0").join(" "))
+      .remove();
+    // Add new polygons
+    const frontGlobalEnter = frontGlobalPolygons
+      .enter()
+      .append("polygon")
+      .attr("data-city", (d: CityPulseDataType) => d.City)
+      .attr("class", "front-global-polygon")
+      .attr("points", metrics.map(() => "0,0").join(" "))
+      .attr("fill", "none")
+      .attr("stroke", "#000")
+      .attr("stroke-width", STROKE_WIDTH)
+      .attr("stroke-opacity", 0.8);
+    // Update all polygons
+    (frontGlobalPolygons as any)
+      .merge(frontGlobalEnter)
+      .transition()
+      .duration(UPDATE_TIMEOUT)
+      .attr("points", (d: CityPulseDataType) => {
+        return metrics
+          .map((metric, i) => {
+            const value =
+              Number(d[metric as keyof CityPulseDataType] || 0) / 100;
+            return [
+              radius * value * Math.cos(angleSlice * i - Math.PI / 2),
+              radius * value * Math.sin(angleSlice * i - Math.PI / 2),
+            ].join(",");
+          })
+          .join(" ");
+      })
+      .attr(
+        "stroke",
+        (d: CityPulseDataType) =>
+          colors[d.Region as keyof typeof colors] || "#000",
+      )
+      .attr("stroke-dasharray", "6,4")
+      .attr("stroke-width", STROKE_WIDTH)
+      .attr("stroke-opacity", 0.8);
+
+    // we will update the circle too
+    const frontGlobalCirclesData = globalData.flatMap((d) =>
+      metrics.map((metric, i) => {
+        const value = Number(d[metric as keyof CityPulseDataType] || 0) / 100;
+        return {
+          city: d.City,
+          metric,
+          x: radius * value * Math.cos(angleSlice * i - Math.PI / 2),
+          y: radius * value * Math.sin(angleSlice * i - Math.PI / 2),
+          color: colors[d.Region as keyof typeof colors] || "#000",
+        };
+      }),
+    );
+
+    const frontGlobalCircles = frontGlobalCircleLayer
+      .selectAll("circle")
+      .data(frontGlobalCirclesData);
+
+    // Remove old circles
+    frontGlobalCircles
+      .exit()
+      .transition()
+      .duration(UPDATE_TIMEOUT)
+      .attr("r", 0)
+      .remove();
+
+    // Add new circles
+    frontGlobalCircles
+      .enter()
+      .append("circle")
+      .attr("data-city", (d) => d.city)
+      .attr("class", "front-global-circle")
+      .attr("r", 0)
+      .attr("cx", 0)
+      .attr("cy", 0)
+      .attr("fill", (d) => d.color)
+      .transition()
+      .duration(UPDATE_TIMEOUT)
+      .attr("r", NODE_RADIUS)
+      .attr("cx", (d) => d.x)
+      .attr("cy", (d) => d.y);
+
+    // we will update the circle too
+    frontGlobalCircles
+      .merge(frontGlobalCircles)
+      .transition()
+      .duration(UPDATE_TIMEOUT)
+      .attr("r", 5)
+      .attr("cx", (d: any) => d.x)
+      .attr("cy", (d: any) => d.y)
+      .attr("fill", (d: any) => d.color);
   }
 
   function updateCityPolygons() {
@@ -244,12 +442,11 @@
         (d: CityPulseDataType) =>
           colors[d.Region as keyof typeof colors] || "#999",
       )
-      .attr("stroke-width", 3);
+      .attr("stroke-width", 2);
 
     // Update all polygons
     (frontPolygons as any)
       .merge(frontEnter)
-      // .attr("stroke-width", 3)
       .transition()
       .duration(UPDATE_TIMEOUT)
       .attr("points", (d: CityPulseDataType) => {
@@ -291,7 +488,7 @@
     frontCircles
       .exit()
       .transition()
-      .duration(UPDATE_TIMEOUT / 2)
+      .duration(UPDATE_TIMEOUT)
       .attr("r", 0)
       .attr(
         // make it go to center
@@ -321,7 +518,7 @@
       // Place each circle at the last metric's position (polygon endpoint)
       .attr("cx", (d: any) => d.x)
       .attr("cy", (d: any) => d.y)
-      .attr("fill", (d) => d.color);
+      .attr("fill", (d: any) => d.color);
 
     updateKDTree();
   }
@@ -330,7 +527,7 @@
     const metrics = [...quantitativeColumns];
     const angleSlice = (Math.PI * 2) / metrics.length;
 
-    const frontCirclesData = selectedCities.flatMap((d) =>
+    const frontCirclesData = [...selectedCities, ...globalData].flatMap((d) =>
       metrics.map((metric, i) => {
         const value = Number(d[metric as keyof CityPulseDataType] || 0) / 100;
         return {
@@ -353,6 +550,7 @@
     isInitialTransitionDone = false;
     drawStaticElements();
     updateCityPolygons();
+
     setTimeout(() => {
       isInitialTransitionDone = true;
     }, 1000); // or slightly longer than your transition duration
@@ -365,6 +563,10 @@
     setTimeout(() => {
       isInitialTransitionDone = true;
     }, 1000); // or slightly longer than your transition duration
+  }
+
+  $: if (svg && globalData) {
+    drawGlobalStatistics();
   }
 
   onMount(() => {
