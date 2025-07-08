@@ -37,7 +37,7 @@
 <div class="app-container">
   <Dropdown {citiesData} {selectedCities} on:citySelect={handleCitySelect} />
   <div class="chart-container">
-    <ChartResizer minWidth={400} minHeight={400}>
+    <ChartResizer minWidth={400} minHeight={400} maxWidth={800} maxHeight={800}>
       <svelte:fragment let:width let:height>
         <SpiderChart
           {quantitativeColumns}

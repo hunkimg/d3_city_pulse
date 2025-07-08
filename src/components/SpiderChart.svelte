@@ -144,6 +144,7 @@
     const backgroundEnter = backgroundPolygons
       .enter()
       .append("polygon")
+      .attr("data-city", (d: CityPulseDataType) => d.City)
       .attr("class", "background-city-polygon")
       .attr("points", metrics.map(() => "0,0").join(" "))
       .attr(
@@ -254,6 +255,8 @@
     const circlesEnter = frontCircles
       .enter()
       .append("circle")
+      .attr("data-city", (d) => d.city)
+      .attr("class", "front-circle")
       .attr("r", 8)
       .attr("fill", (d) => d.color)
       .attr("cx", 0)
@@ -343,6 +346,14 @@
               .duration(150)
               .attr("fill-opacity", (d) => (d.City === point.city ? 0.3 : 0));
 
+            frontCircleLayer
+              .selectAll<SVGCircleElement, { city: string }>(
+                "circle.front-circle",
+              )
+              .transition()
+              .duration(150)
+              .attr("fill-opacity", (d) => (d.city === point.city ? 1 : 0.3));
+
             tooltipX = event.clientX;
             tooltipY = event.clientY;
             tooltipCity = point.city;
@@ -375,6 +386,13 @@
           .duration(150)
           .ease(d3.easeCubic)
           .attr("fill-opacity", 0);
+
+        frontCircleLayer
+          .selectAll<SVGCircleElement, CityPulseDataType>("circle.front-circle")
+          .transition()
+          .duration(150)
+          .ease(d3.easeCubic)
+          .attr("fill-opacity", 1);
       });
   });
 
