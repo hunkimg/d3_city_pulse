@@ -211,7 +211,12 @@
             ].join(",");
           })
           .join(" ");
-      });
+      })
+      .attr(
+        "fill",
+        (d: CityPulseDataType) =>
+          colors[d.Region as keyof typeof colors] || "#999",
+      );
 
     // Front polygons
     const frontPolygons = frontPolygonLayer
@@ -258,7 +263,12 @@
             ].join(",");
           })
           .join(" ");
-      });
+      })
+      .attr(
+        "stroke",
+        (d: CityPulseDataType) =>
+          colors[d.Region as keyof typeof colors] || "#999",
+      );
 
     const frontCirclesData = selectedCities.flatMap((d) =>
       metrics.map((metric, i) => {
@@ -310,7 +320,9 @@
       .attr("r", 8)
       // Place each circle at the last metric's position (polygon endpoint)
       .attr("cx", (d: any) => d.x)
-      .attr("cy", (d: any) => d.y);
+      .attr("cy", (d: any) => d.y)
+      .attr("fill", (d) => d.color);
+
     updateKDTree();
   }
 
